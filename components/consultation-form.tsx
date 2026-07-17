@@ -2,28 +2,46 @@
 
 import { FormEvent, useState } from "react";
 
-export function ConsultationForm() {
-  const [sent, setSent] = useState(false);
+const SUBMISSION_ENDPOINT = "https://formsubmit.co/ajax/yiweixuexue@gmail.com";
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+export function ConsultationForm() {
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSent(true);
+    setStatus("sending");
+
+    try {
+      const response = await fetch(SUBMISSION_ENDPOINT, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(event.currentTarget),
+      });
+
+      if (!response.ok) throw new Error("Submission failed");
+      setStatus("sent");
+    } catch {
+      setStatus("error");
+    }
   }
 
-  if (sent) {
+  if (status === "sent") {
     return (
       <div className="form-success" role="status">
         <span>✓</span>
-        <p className="eyebrow">DEMO CONFIRMATION</p>
-        <h2>预约信息已在本页完成演示</h2>
-        <p>当前为官网初版，尚未连接真实收集渠道。接入品牌微信、邮箱或预约系统后，即可正式接收咨询。</p>
-        <button type="button" onClick={() => setSent(false)}>返回表单</button>
+        <p className="eyebrow">THANK YOU</p>
+        <h2>预约信息已成功提交</h2>
+        <p>感谢您的信任。我们已收到您的定制咨询，将尽快通过您留下的联系方式与您沟通。</p>
+        <button type="button" onClick={() => setStatus("idle")}>提交另一份咨询</button>
       </div>
     );
   }
 
   return (
     <form className="consultation-form" onSubmit={handleSubmit}>
+      <input type="hidden" name="_subject" value="屮微我官网｜新的定制咨询" />
+      <input type="hidden" name="_template" value="table" />
+      <input className="form-honeypot" type="text" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" />
       <div className="field-row">
         <label><span>称呼 *</span><input name="name" required placeholder="如何称呼您" /></label>
         <label><span>联系方式 *</span><input name="contact" required placeholder="微信或手机号" /></label>
@@ -34,9 +52,12 @@ export function ConsultationForm() {
       </div>
       <label><span>所在城市</span><input name="city" placeholder="便于确认到店或远程沟通方式" /></label>
       <label><span>想告诉我们的事</span><textarea name="message" rows={5} placeholder="例如穿着场合、风格偏好、预算范围，或目前最困扰您的问题" /></label>
-      <label className="consent"><input type="checkbox" required /><span>我同意仅将以上信息用于本次定制咨询（演示）</span></label>
-      <button className="button button-dark" type="submit">提交预约意向</button>
-      <p className="form-hint">初版演示：此表单暂不会发送或保存真实信息。</p>
+      <label className="consent"><input type="checkbox" required /><span>我同意仅将以上信息用于本次定制咨询</span></label>
+      <button className="button button-dark" type="submit" disabled={status === "sending"}>
+        {status === "sending" ? "正在提交…" : "提交预约意向"}
+      </button>
+      {status === "error" && <p className="form-error" role="alert">提交没有成功，请稍后重试，或直接发送邮件至 yiweixuexue@gmail.com。</p>}
+      <p className="form-hint">提交后，我们会尽快通过您留下的联系方式回复。</p>
     </form>
   );
 }

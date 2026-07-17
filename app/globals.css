@@ -256,6 +256,9 @@ button, input, textarea, select { font: inherit; }
 .consultation-form .consent input { width: auto; }
 .consultation-form .button { width: max-content; margin-top: 10px; }
 .form-hint { margin: -13px 0 0; color: #99948a; font-size: 9px; }
+.form-honeypot { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden; }
+.form-error { margin: -8px 0 0; color: #8b3029; font-size: 11px; line-height: 1.6; }
+.consultation-form .button:disabled { cursor: wait; opacity: .6; }
 .form-success { min-height: 480px; padding: 70px 28px; text-align: center; border: 1px solid var(--line); }
 .form-success > span { display: grid; width: 62px; height: 62px; margin: 0 auto 34px; place-items: center; border: 1px solid var(--ink); border-radius: 50%; }
 .form-success h2 { font-size: 34px; }
