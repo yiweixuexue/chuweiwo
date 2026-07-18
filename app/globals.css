@@ -90,7 +90,7 @@ button, input, textarea, select { font: inherit; }
 .service-art::before { inset: 7% 18% -10%; border-radius: 48% 48% 10% 10%; background: linear-gradient(145deg, rgba(255,255,255,.5), rgba(46,45,42,.42)); filter: blur(.2px); }
 .service-art::after { inset: 0; background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,.25) 48%, transparent 62%); }
 .service-art-01 {
-  background-image: url("/images/modern-chinese-women.png");
+  background-image: var(--modern-chinese-women-image);
   background-position: center;
   background-size: cover;
 }
