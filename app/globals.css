@@ -94,7 +94,7 @@ button, input, textarea, select { font: inherit; }
   background-image: var(--modern-chinese-women-image);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 100% 100%;
 }
 .service-art-01::before { display: none; }
 .service-art-01::after { background: linear-gradient(180deg, rgba(21,21,19,.2), transparent 28%); }
