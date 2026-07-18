@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { ConsultationForm } from "../../components/consultation-form";
 import { SiteFooter, SiteHeader } from "../../components/site-shell";
 
+const siteBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export const metadata: Metadata = {
   title: "预约咨询",
   description: "预约屮微我新中式、旗袍与男士正装定制初步沟通。",
@@ -30,7 +32,18 @@ export default function ConsultationPage() {
               <li><span>02</span><p><strong>喜欢或不喜欢的参考图</strong>不必专业，直觉感受同样重要。</p></li>
               <li><span>03</span><p><strong>现有衣橱或过往困扰</strong>了解为什么“不好穿”，比追逐某种款式更有价值。</p></li>
             </ul>
-            <div className="contact-placeholder"><p>也可通过品牌微信预约</p><span>此处后续替换为微信二维码</span></div>
+            <div className="contact-wechat">
+              <p>也可通过品牌微信预约</p>
+              <img
+                src={`${siteBasePath}/images/wechat-qr.png`}
+                alt="屮微我品牌微信二维码"
+                width="632"
+                height="632"
+                loading="lazy"
+                decoding="async"
+              />
+              <span>打开微信扫一扫，添加品牌微信</span>
+            </div>
           </div>
           <div className="form-panel">
             <p className="eyebrow">APPOINTMENT FORM</p>

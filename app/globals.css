@@ -240,9 +240,10 @@ button, input, textarea, select { font: inherit; }
 .consultation-aside li > span { color: #9a9287; font: 10px Georgia, serif; }
 .consultation-aside li p { margin: 0; color: #747169; font-size: 12px; line-height: 1.8; }
 .consultation-aside li strong { display: block; margin-bottom: 5px; color: var(--ink); font: 400 16px "Songti SC", serif; letter-spacing: .08em; }
-.contact-placeholder { padding: 24px; border: 1px solid var(--line); }
-.contact-placeholder p { margin: 0 0 8px; font: 16px "Songti SC", serif; }
-.contact-placeholder span { color: #8a867e; font-size: 10px; }
+.contact-wechat { padding: 24px; border: 1px solid var(--line); text-align: center; }
+.contact-wechat p { margin: 0 0 18px; font: 16px "Songti SC", serif; }
+.contact-wechat img { display: block; width: min(100%, 280px); height: auto; margin: 0 auto 14px; background: white; }
+.contact-wechat span { color: #8a867e; font-size: 10px; letter-spacing: .06em; }
 .form-panel { padding: 52px; background: #e8e3da; }
 .form-panel > p:not(.eyebrow) { margin: 17px 0 38px; color: #77736b; font-size: 12px; }
 .consultation-form { display: grid; gap: 24px; }
