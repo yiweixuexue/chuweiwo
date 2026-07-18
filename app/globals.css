@@ -229,7 +229,10 @@ button, input, textarea, select { font: inherit; }
 /* Lookbook */
 .lookbook-index { display: flex; justify-content: space-between; align-items: center; padding-block: 38px; border-bottom: 1px solid var(--line); }
 .lookbook-index nav { display: flex; gap: 30px; color: #747168; font-size: 11px; letter-spacing: .08em; }
-.lookbook-index nav span:first-child { color: var(--ink); border-bottom: 1px solid var(--ink); }
+.lookbook-index nav button { appearance: none; border: 0; border-bottom: 1px solid transparent; background: transparent; color: inherit; cursor: pointer; font: inherit; letter-spacing: inherit; padding: 0 0 7px; }
+.lookbook-index nav button:hover, .lookbook-index nav button[aria-pressed="true"] { color: var(--ink); }
+.lookbook-index nav button[aria-pressed="true"] { border-bottom-color: var(--ink); }
+.lookbook-index nav button:focus-visible { outline: 1px solid var(--ink); outline-offset: 5px; }
 .lookbook-index > p { color: #969188; font-size: 9px; letter-spacing: .18em; }
 .lookbook-gallery { display: grid; grid-template-columns: repeat(12, 1fr); gap: 92px 28px; padding-block: 92px 150px; align-items: end; }
 .gallery-work.tall { grid-column: span 7; }
