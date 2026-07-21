@@ -229,21 +229,26 @@ button, input, textarea, select { font: inherit; }
 /* Lookbook */
 .lookbook-index { display: flex; justify-content: space-between; align-items: center; padding-block: 38px; border-bottom: 1px solid var(--line); }
 .lookbook-index nav { display: flex; gap: 30px; color: #747168; font-size: 11px; letter-spacing: .08em; }
-.lookbook-index nav span:first-child { color: var(--ink); border-bottom: 1px solid var(--ink); }
+.lookbook-index nav button { appearance: none; border: 0; border-bottom: 1px solid transparent; background: transparent; color: inherit; cursor: pointer; font: inherit; letter-spacing: inherit; padding: 0 0 7px; }
+.lookbook-index nav button:hover, .lookbook-index nav button[aria-pressed="true"] { color: var(--ink); }
+.lookbook-index nav button[aria-pressed="true"] { border-bottom-color: var(--ink); }
+.lookbook-index nav button:focus-visible { outline: 1px solid var(--ink); outline-offset: 5px; }
 .lookbook-index > p { color: #969188; font-size: 9px; letter-spacing: .18em; }
 .lookbook-gallery { display: grid; grid-template-columns: repeat(12, 1fr); gap: 92px 28px; padding-block: 92px 150px; align-items: end; }
+.gallery-work { position: relative; }
 .gallery-work.tall { grid-column: span 7; }
 .gallery-work.short { grid-column: span 5; }
 .gallery-work.wide { grid-column: 2 / 12; }
+.gallery-work-select { position: absolute; z-index: 1; inset: 0; width: 100%; border: 0; background: transparent; cursor: pointer; }
+.gallery-work-select:focus-visible { outline: 1px solid var(--ink); outline-offset: 6px; }
 .gallery-image { position: relative; min-height: 630px; background-size: cover; background-position: center; filter: saturate(.78); }
 .gallery-work.short .gallery-image { min-height: 530px; }
 .gallery-work.wide .gallery-image { min-height: 520px; }
 .gallery-image span { position: absolute; top: 18px; left: 20px; color: rgba(255,255,255,.74); font: 10px Georgia, serif; letter-spacing: .15em; }
-.lb-women { background-image: var(--lookbook-women-image); }
-.lb-men { background-image: var(--lookbook-men-image); }
-.lb-hero { background-image: var(--hero-image); background-position: center 36%; }
+.lb-modern-chinese { background-image: var(--modern-chinese-women-image); }
+.lb-qipao { background-image: var(--qipao-atelier-home-image); }
+.lb-men { background-image: var(--mens-tailoring-home-image); }
 .lb-detail { background-image: linear-gradient(rgba(21,21,19,.1),rgba(21,21,19,.1)), var(--lookbook-women-image); background-size: 190%; background-position: 52% 14%; }
-.lb-ceremony { background-image: linear-gradient(rgba(21,21,19,.08),rgba(21,21,19,.08)), var(--lookbook-men-image); background-position: 50% 18%; }
 .gallery-work > div:last-child { display: flex; justify-content: space-between; align-items: baseline; padding-top: 18px; border-bottom: 1px solid var(--line); }
 .gallery-work p { color: #858178; font-size: 9px; letter-spacing: .16em; }
 .gallery-work h2 { margin: 0 0 14px; font: 400 26px "Songti SC", serif; letter-spacing: .15em; }
