@@ -24,6 +24,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           --mens-tailoring-home-image: url("${siteBasePath}/images/mens-tailoring-home.png");
           --lookbook-women-image: url("${siteBasePath}/images/lookbook-women.webp");
           --lookbook-men-image: url("${siteBasePath}/images/lookbook-men.png");
+          --craftsmanship-home-image: url("${siteBasePath}/images/DSC08884-2.jpg");
         }`}</style>
         {children}
       </body>
