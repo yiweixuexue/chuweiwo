@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 
 const filters = [
   { id: "all", label: "全部" },
-  { id: "women", label: "女士新中式" },
+  { id: "women", label: "新中式" },
   { id: "qipao", label: "旗袍" },
   { id: "men", label: "男士正装" },
   { id: "craft", label: "手作细节" },
@@ -13,11 +13,10 @@ const filters = [
 type FilterId = (typeof filters)[number]["id"];
 
 const works = [
-  { title: "兰影", meta: "旗袍定制 · HERITAGE QIPAO", className: "lb-women", size: "tall", filter: "qipao" },
-  { title: "留白", meta: "男士正装 · MODERN CEREMONY", className: "lb-men", size: "short", filter: "men" },
-  { title: "见山", meta: "女士新中式 · MODERN CHINESE", className: "lb-hero", size: "wide", filter: "women" },
-  { title: "一枚盘扣的时间", meta: "非遗手作细节 · CRAFT", className: "lb-detail", size: "short", filter: "craft" },
-  { title: "相见", meta: "婚礼与家庭定制 · OCCASION", className: "lb-ceremony", size: "tall", filter: "women" },
+  { number: "01", title: "新中式", meta: "MODERN CHINESE · I'm_", className: "lb-modern-chinese", size: "tall", filter: "women" },
+  { number: "02", title: "旗袍", meta: "HERITAGE QIPAO · I'm_", className: "lb-qipao", size: "short", filter: "qipao" },
+  { number: "03", title: "男士正装", meta: "MENS TAILORING · I'm_", className: "lb-men", size: "short", filter: "men" },
+  { number: "04", title: "手作细节", meta: "HANDCRAFT DETAILS · I'm_", className: "lb-detail", size: "tall", filter: "craft" },
 ] as const;
 
 export function LookbookGallery() {
@@ -45,10 +44,16 @@ export function LookbookGallery() {
         <p>SELECTED STORIES · 2026</p>
       </section>
       <section aria-live="polite" className="shell lookbook-gallery">
-        {visibleWorks.map((work, index) => (
+        {visibleWorks.map((work) => (
           <article className={`gallery-work ${work.size}`} key={work.title}>
+            <button
+              aria-label={`选择${work.title}作品`}
+              className="gallery-work-select"
+              onClick={() => setActiveFilter(work.filter)}
+              type="button"
+            />
             <div className={`gallery-image ${work.className}`} role="img" aria-label={`${work.title}系列示例图`}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
+              <span>{work.number}</span>
             </div>
             <div><p>{work.meta}</p><h2>{work.title}</h2></div>
           </article>
